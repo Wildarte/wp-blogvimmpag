@@ -1,0 +1,219 @@
+@import url('./style.css');
+.header_post{
+    min-height: 180px;
+    text-align: center;
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header_post_content{
+    background-color: rgba(0, 0, 255, 0.4);
+}
+.header_post h2{
+    margin: auto;
+    font-size: 3em;
+    font-weight: 600;
+    padding: 80px 60px;
+    color: var(--yellow);
+    text-shadow: 2px 2px 6px #000;
+}
+
+.post_page{
+    margin: 40px auto;
+    padding: 10px 0;
+}
+.post_page_author{
+    display: block;
+    margin: 10px;
+}
+.post_page_author p{
+    width: 768px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.post_page_thumb_author{
+    width: 54px;
+    height: 54px;
+    display: inline;
+    margin-right: 20px;
+}
+.post_page_thumb_author img{
+    width: 100%;
+}
+.content_post{
+    max-width: 768px;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+/* style post page */
+.post_indication{
+    margin: auto;
+    max-width: 768px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.thumb_post_content{
+    width: 100%;
+    height: 240px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+.content_post p{
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 2em;
+}
+
+.hr_pos_post_content{
+    margin-top: 80px;
+    border: none;
+    background-color: #bababa;
+    height: 1px;
+}
+
+.share_post{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: auto;
+    margin: 10px 0 20px;
+}
+.share_post h5{
+    font-size: 1.4em;
+    margin-right: 10px;
+    color: #343434;
+}
+ul.share_post_links{
+    display: flex;
+    align-items: center;
+    list-style: none!important;
+    margin: 0px!important;
+    padding: 2px;
+}
+ul.share_post_links li{
+    margin: 0 10px 0 0;
+    padding: 2px;
+    display: flex;
+    align-content: center;
+    line-height: unset!important;
+    width: 32px;
+    height: 32px;
+    background-color: var(--main-color);
+    font-size: 1em!important;
+}
+ul.share_post_links li a{
+    display: flex;
+    color: #fff;
+    margin: auto;
+}
+ul.share_post_links li i{
+    margin: auto;
+    font-size: 1em!important;
+}
+.post_indication_header{
+    margin: 20px 0;
+}
+.post_indication_header h3{
+    font-size: 2em;
+    color: #343434;
+    font-weight: 400;
+}
+
+.section_posts_page_post{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 100%;
+}
+
+.section_posts_page_post .card_post{
+    flex-basis: calc(33.33% - 20px);
+}
+.section_posts_page_post .card_post .post_image .post_image_content{
+    height: 140px;
+}
+.section_posts_page_post .card_post .post_header h2{
+    font-size: 1em;
+}
+.section_posts_page_post .card_post .post_resume{
+    font-size: .7em;
+}
+@media(max-width: 768px){
+    .header_post_content{
+        display: flex;
+    }
+    .header_post h2{
+        padding: 20px;
+    }
+}
+
+@media(max-width: 600px){
+    .header_post h2{
+        font-size: 2em;
+    }
+    .section_posts_page_post .card_post{
+        flex-basis: calc(100% - 20px);
+        display: flex;
+    }
+    .section_posts_page_post .card_post .post_image{
+        width: 30%;
+        margin-right: 15px;
+        display: flex;
+    }
+    .section_posts_page_post .card_post .post_image .post_image_content{
+        width: 100%;
+        max-height: 80%;
+        margin: auto;
+    }
+    .section_posts_page_post .card_post .post_header{
+        width: 65%;
+    }
+}
+
+@media(max-width: 420px){
+    .content_post{
+        margin: 40px 0 20px; 
+    }
+    .section_posts_page_post .card_post .post_image{
+        width: 120px;
+        height: 120px;
+        margin-right: 10px;
+    }
+    .section_posts_page_post .card_post .post_image .post_image_content{
+        margin-top: 10px;
+    }
+    .post_indication_header{
+        width: 100%;
+    }
+    .post_indication_header h3{
+        padding: 10px;
+        font-size: 1.6em;
+        text-align: left;
+    }
+    .section_posts_page_post .card_post .post_header h2{
+        font-size: .9em;
+    }
+    .section_posts_page_post .card_post .post_header{
+        padding-left: 0px;
+    }
+    .header_post h2{
+        padding: 10px;
+        font-size: 1.6em;
+    }
+}
+
+@media(max-width: 320px){
+    .share_post h5{
+        width: 100%;
+    }
+}

@@ -1,0 +1,14 @@
+@import url('./../bootstrap-icons-1.7.2/bootstrap-icons.css');
+@import url('./../font/static/OpenSans/open-sans.css');
+*{
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
