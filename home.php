@@ -1,5 +1,5 @@
 
-<?php include('./header.php') ?>
+<?php get_header(); ?>
     
     <div class="home_intro">
         <h1 class="home_title">Blog</h1>
@@ -136,10 +136,10 @@
 
         </section>
 
-        <?php include('./inc/aside.php') ?>
+        <?php include('inc/aside.php') ?>
 
     </main>
 
     
-<?php include('./footer.php') ?>
+<?php get_footer(); ?>
 

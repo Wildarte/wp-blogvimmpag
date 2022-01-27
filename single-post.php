@@ -1,4 +1,4 @@
-<?php include('./header.php') ?>
+<?php get_header(); ?>
     <div class="header_post container-full" style="background-image: url('./assets/img/single-post/intro.jpg');">
         <div class="header_post_content container-full">
             <h2 class="container">10 motivos para não atrasar o pagamento dos seus boletos no final do ano</h2>
@@ -145,4 +145,4 @@
 
     </main>
 
-    <?php include('./footer.php') ?>
+    <?php get_footer(); ?>

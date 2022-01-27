@@ -7,3 +7,8 @@ Description: Tema desenvolvido para a empresa VIMMPag
 Version: 1.0
 */
 
+@import url('assets/css/reset.css');
+@import url('./assets/css/style.css');
+@import url('./assets/css/categoria.css');
+@import url('./assets/css/post.css');
+@import url('./assets/css/search.css');

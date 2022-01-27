@@ -1,4 +1,4 @@
-<?php include('./header.php'); ?>
+<?php get_header(); ?>
     
     <div class="categoria_intro">
         <h2><strong>Categoria: </strong>Boletos</h2>
@@ -125,4 +125,4 @@
 
     </main>
 
-<?php include('./footer.php'); ?>
+<?php get_footer(); ?>

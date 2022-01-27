@@ -1,5 +1,5 @@
 
-<?php include('./header.php') ?>
+<?php get_header(); ?>
     
 
 <main>
@@ -7,5 +7,5 @@
 </main>
 
     
-<?php include('./footer.php') ?>
+<?php get_footer(); ?>
 

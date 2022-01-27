@@ -1,4 +1,4 @@
-<?php include('./header.php'); ?>
+<?php get_header(); ?>
     
     <div class="pesquisa_intro">
         <h2><strong>"<?= $_POST['s'] ?>"</strong></h2>
@@ -130,4 +130,4 @@
 
     </main>
 
-<?php include('./footer.php'); ?>
+<?php get_footer(); ?>

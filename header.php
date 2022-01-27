@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./assets/css/post.css">
     <link rel="stylesheet" href="./assets/css/search.css">
     <link rel="stylesheet" href="./assets/css/categoria.css">
+    <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/style.css">
     <title>blog - VIMMPag</title>
 </head>
 <body>
