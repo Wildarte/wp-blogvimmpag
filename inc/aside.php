@@ -2,7 +2,7 @@
     <div class="sidebar_content">
         <header class="sidebar_header">
             <h3>Pesquise...</h3>
-            <form action="./pagina-pesquisa.php" method="post">
+            <form action="<?= home_url(); ?>" method="get">
                 <input type="text" name="s" id="" placeholder="...">
                 <button type="submit" class="form_icon_search">
                     <i class="bi bi-search"></i>
@@ -48,9 +48,17 @@
                 <h3>Categorias</h3>
             </header>
             <ul class="sidebar_list_categorias">
-                <li><a href="http://">Categoria 1</a></li>
-                <li><a href="http://">Categoria 2</a></li>
-                <li><a href="http://">Categoria 3</a></li>
+                <?php
+                    
+                    $terms = get_terms([
+                        'taxonomy' => 'category',
+                        'hide_empty' => false
+                    ]);
+                    foreach($terms as $term){
+                        echo "<li><a href='". get_home_url() ."/category/". $term->name. "'>".$term->name."</a></li>";        
+                    }
+                    
+                ?>
             </ul>
         </div>
     </div>

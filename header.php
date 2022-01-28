@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/post.css">
-    <link rel="stylesheet" href="./assets/css/search.css">
-    <link rel="stylesheet" href="./assets/css/categoria.css">
-    <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/style.css">
-    <title>blog - VIMMPag</title>
+    <title><?php bloginfo('name'); ?> <?= wp_title(); ?></title>
+    <!-- wordpress head -->
+    <?php wp_head(); ?>
+    <!-- wordpress head -->
 </head>
 <body>
     
@@ -32,8 +29,12 @@
             <div class="header_bar container-full">
                 <div class="header_bar_content container">
                     <div class="header_link_logo">
-                        <a class="link_logo" href="">
-                            <img src="./assets/img/logo.png" alt="">
+                        <?php
+                            $custom_logo_id = get_theme_mod( 'custom_logo' );
+                            $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                        ?>
+                        <a class="link_logo" href="<?php home_url(); ?>">
+                            <img src="<?=  esc_url( $logo[0] )  ?>" alt="">
                         </a>
                     </div>
                     <span class="btn_menu" style="display: none;"><i class="bi bi-list"></i></span>

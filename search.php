@@ -1,13 +1,15 @@
-<?php get_header(); ?>
+<?php get_header(); 
+$s = $_GET['s'];
+?>
     
     <div class="pesquisa_intro">
-        <h2><strong>"<?= $_POST['s'] ?>"</strong></h2>
+        <h2><strong>"<?= $s ?>"</strong></h2>
     </div>
 
     <main class="container main">
 
         <header class="header_pesquisa_page">
-            <h3>Resultados da pesquisa por: <strong>"<?= $_POST['s'] ?>"</strong> </h3>
+            <h3>Resultados da pesquisa por: <strong>"<?= $s ?>"</strong> </h3>
             <hr>
         </header>
         
@@ -126,7 +128,7 @@
 
         </section>
 
-        <?php include('./inc/aside.php') ?>
+        <?php include('inc/aside.php') ?>
 
     </main>
 

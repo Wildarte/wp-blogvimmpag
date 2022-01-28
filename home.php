@@ -22,19 +22,34 @@
                 </article>
             </div>
             
+            <?php
+                $args_post = [
+                    'post_type' => 'post',
+                    //'p' => "",
+                    //'post__not_in' => ""
+                ];
+                $args_post = new WP_Query($args_post);
 
+                if($args_post->have_posts()): while($args_post->have_posts()): $args_post->the_post();
+            ?>
             <article class="single_card card_post">
                 <div class="post_image">
-                    <div class="post_image_content" style="background-image: url('./assets/img/posts/post2.jpg');">
+                        <?php 
+                            $thumb = get_the_post_thumbnail_url(null, 'thumbnail');
+                            $thumb == "" ? $thumb = get_template_directory_uri().'/assets/img/posts/thumb-post.jpg' : "";
+                        ?>
+                    <div class="post_image_content" style="background-image: url('<?= $thumb ?>')">
 
                     </div>
                 </div>
                 <header class="post_header">
-                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique debitis.</h2>
+                    <h2><?= get_the_title(); ?></h2>
                     <p class="post_resume">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta expedita nobis modi sint maiores vitae ex adipisci. Ratione, dolorem.
+                    <?= get_the_excerpt(); ?>
                     </p>
                 </header>
+
+                <?php endwhile; endif; wp_reset_query(); wp_reset_postdata(); ?>
                 
                 <a class="post_link" href="https://blogvimmpag.digisolucao.com/pagina-artigo.php"></a>
             </article>
