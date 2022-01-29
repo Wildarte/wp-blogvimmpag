@@ -14,6 +14,8 @@
     --color-icon-linkedin: #0E76A8;
     --color-icon-facebook: #3B5998;
     --color-icon-instagram: #3F729B;
+    --color-icon-twitter: #00acee;
+    --color-icon-whatsapp: #34af23;
 }
 body{
     background-color: #f7f7f7;
@@ -77,6 +79,12 @@ ul.header_over_social li.icon-facebook{
 }
 ul.header_over_social li.icon-instagram{
     background-color: var(--color-icon-instagram);
+}
+ul.header_over_social li.icon-twitter{
+    background-color: var(--color-icon-twitter);
+}
+ul.header_over_social li.icon-whatsapp{
+    background-color: var(--color-icon-whatsapp);
 }
 
 ul.header_over_social li i{
@@ -199,6 +207,7 @@ article.card_post.top_post:hover{
     transform: translate3d(0,0,0);
 }
 article.card_post.top_post .post_header_top{
+    width: 100%;
     min-height: 42%;
     position: absolute;
     bottom: 0;
@@ -223,6 +232,7 @@ article.card_post.top_post .post_header h2::after{
 */
 article.card_post.top_post .post_categoria{
     padding: 4px 10px;
+    margin-right: 10px;
     background-color: var(--main-color);
     font-size: var(--sm-text);
 }
@@ -448,10 +458,24 @@ ul.sidebar_list_categorias li a{
     padding: 10px;
     margin: 40px 0;
 }
-.btn_controll_posts{
+.controll_posts a{
     margin-right: 20px;
     font-size: var(--lg-title);
     color: var(--yellow);
+    box-shadow: 1px 1px 3px #000;
+    border-radius: 5px;
+}
+.controll_posts a:hover{
+    box-shadow: inset 1px 1px 3px #000;
+    animation: box-s .2;
+}
+@keyframes box-s{
+    from{
+        box-shadow: 2px 2px 5px #000;
+    }
+    to{
+        box-shadow: inset 2px 2px 5px #000;
+    }
 }
 
 /* main */
@@ -520,6 +544,12 @@ ul.footer_list_social li.icon-facebook{
 ul.footer_list_social li.icon-instagram{
     background-color: var(--color-icon-instagram);
 }
+ul.footer_list_social li.icon-twitter{
+    background-color: var(--color-icon-twitter);
+}
+ul.footer_list_social li.icon-whatsapp{
+    background-color: var(--color-icon-whatsapp);
+}
 
 ul.footer_list_social li i{
     color: #fff;
@@ -547,10 +577,15 @@ ul.footer_categoria li{
     padding: 5px;
     margin: 8px 16px 8px 0;
     background-color: var(--yellow);
+    display: flex;
+}
+ul.footer_categoria li:hover{
+    box-shadow: 2px 2px 10px #121212;
 }
 ul.footer_categoria li a{
     color: #fff;
     font-size: var(--md-text);
+    width: 100%;
 }
 /* footer */
 
@@ -620,6 +655,12 @@ ul.footer_categoria li a{
     .section_posts .card_post{
         flex-basis: calc(50% - 20px);
     }
+    ul.header_over_contato li a i{
+        margin: 0 2px;
+    }
+    .footer_content .col{
+        flex-basis: calc(50% - 20px);
+    }
 }
 
 
@@ -638,6 +679,10 @@ ul.footer_categoria li a{
     }
     .header_bar_content .header_cta{
         flex-basis: 40%;
+    }
+    .footer_content .col{
+        flex-basis: 100%;
+        margin: 20px 0;
     }
 }
 
@@ -748,5 +793,11 @@ ul.footer_categoria li a{
 @media(max-width: 375px){
     .header_cta a{
         padding: 4px 8px;
+    }
+}
+
+@media(max-width: 320px){
+    ul.header_over_social li i{
+        font-size: 1em;
     }
 }

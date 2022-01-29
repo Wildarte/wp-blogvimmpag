@@ -45,4 +45,6 @@
     //add support to thumbnail post
     add_theme_support( 'post-thumbnails', ['post']);
 
+    include('admin/panel.php');
+
 ?>

@@ -12,24 +12,61 @@
                     <h3>Redes Sociais</h3>
                 </header>
                 <ul class="footer_list_social">
-                    <li class="icon-linkedin"><a href="http://"><i class="bi bi-linkedin"></i></a></li>
-                    <li class="icon-facebook"><a href="http://"><i class="bi bi-facebook"></i></a></li>
-                    <li class="icon-instagram"><a href="http://"><i class="bi bi-instagram"></i></a></li>
+                    <?php
+                        $f_facebook = get_option('show_facebook');
+                        $f_instagram = get_option('show_instagram');
+                        $f_linkedin = get_option('show_linkedin');
+                        $f_twitter = get_option('show_twitter');
+                        $f_whatsapp = get_option('show_whatsapp');
+                    ?>
+                    <?php if($f_linkedin): ?>
+                        <li class="icon-linkedin"><a href="<?= $f_linkedin ?>"><i class="bi bi-linkedin"></i></a></li>
+                        <?php endif; ?>
+                        <?php if($f_facebook): ?>
+                        <li class="icon-facebook"><a href="<?= $f_facebook; ?>"><i class="bi bi-facebook"></i></a></li>
+                        <?php endif; ?>
+                        <?php if($f_instagram): ?>
+                        <li class="icon-instagram"><a href="<?= $f_instagram ?>"><i class="bi bi-instagram"></i></a></li>
+                        <?php endif; ?>
+                        <?php if($f_twitter): ?>
+                        <li class="icon-twitter"><a href="<?= $f_twitter ?>"><i class="bi bi-twitter"></i></a></li>
+                        <?php endif; ?>
+                        <?php if($f_whatsapp): ?>
+                        <li class="icon-whatsapp"><a href="<?= $f_whatsapp ?>"><i class="bi bi-whatsapp"></i></a></li>
+                        <?php endif; ?>
                 </ul>
             </div>
             <div class="col footer_col_3">
+                <?php 
+                    $telefone = get_option("show_telefone");
+                    $email = get_option('show_email');
+                ?>
+                <?php if(!empty($email) || !empty($telefone)): ?>
                 <header class="header_footer_col_3">
                     <h3>Contato</h3>
                 </header>
+                
                 <ul class="footer_contato">
-                    <li><a href="mailto:contato@meusite.com.br"><i class="bi bi-envelope"></i> contato@meusite.com.br</a></li>
-                    <li><a href="tel:+5511999999999"><i class="bi bi-telephone"></i> +55 11 9 9999-9999</a></li>
+                <?php if(!empty($email)): ?>
+                        <li class=""><a href="mailto:<?= get_option("show_email") ?>"><i class="bi bi-envelope"></i> <?= get_option("show_email") ?></a></li>
+                        <?php endif; ?>
+                        <?php if(!empty($telefone)): ?>
+                        <li class=""><a href="tel:<?= get_option("show_telefone") ?>"><i class="bi bi-telephone"></i> <?= get_option("show_telefone") ?></a></li>
+                        <?php endif; ?>
                 </ul>
+                <?php endif; ?>
                 <ul class="footer_categoria">
-                    <li><a href="http://">Categoria 1</a></li>
-                    <li><a href="http://">Categoria 2</a></li>
-                    <li><a href="http://">Categoria 3</a></li>
-                    <li><a href="http://">Categoria 4</a></li>
+                <?php
+                    
+                    $terms = get_terms([
+                        'taxonomy' => 'category',
+                        'hide_empty' => false
+                    ]);
+                    foreach($terms as $term){
+                        echo "<li><a href='". get_home_url() ."/category/". $term->name. "'>".$term->name."</a></li>";        
+                    }
+                    
+                ?>
                 </ul>
             </div>
         </div>
@@ -45,12 +82,7 @@
    
     <?php wp_footer(); ?>
     <script>
-        const btn_ctr = document.querySelectorAll('.btn_controll_posts');
-        btn_ctr.forEach((btn) => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-            })
-        })
+        
         
     </script>
 </body>

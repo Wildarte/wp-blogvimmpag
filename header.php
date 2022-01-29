@@ -16,13 +16,38 @@
             <div class="header_over container-full">
                 <div class="container header_over_container">
                     <ul class="header_over_contato">
-                        <li class="header_email"><a href="mailto:contato@meusite.com.br"><i class="bi bi-envelope"></i>contato@meusite.com.br</a></li>
-                        <li class="header_tel"><a href="tel:+5511999999999"><i class="bi bi-telephone"></i> +55 11 9 9999-9999</a></li>
+                        <?php $email = get_option('show_email'); ?>
+                        <?php if(!empty($email)): ?>
+                        <li class="header_email"><a href="mailto:<?= get_option("show_email") ?>"><i class="bi bi-envelope"></i> <?= get_option("show_email") ?></a></li>
+                        <?php endif; ?>
+                        <?php $telefone = get_option("show_telefone"); ?>
+                        <?php if(!empty($telefone)): ?>
+                        <li class="header_tel"><a href="tel:<?= get_option("show_telefone") ?>"><i class="bi bi-telephone"></i> <?= get_option("show_telefone") ?></a></li>
+                        <?php endif; ?>
                     </ul>
                     <ul class="header_over_social">
-                        <li class="icon-linkedin"><a href="http://"><i class="bi bi-linkedin"></i></a></li>
-                        <li class="icon-facebook"><a href="http://"><i class="bi bi-facebook"></i></a></li>
-                        <li class="icon-instagram"><a href="http://"><i class="bi bi-instagram"></i></a></li>
+                        <?php
+                            $h_facebook = get_option('show_facebook');
+                            $h_instagram = get_option('show_instagram');
+                            $h_linkedin = get_option('show_linkedin');
+                            $h_twitter = get_option('show_twitter');
+                            $h_whatsapp = get_option('show_whatsapp');
+                        ?>
+                        <?php if($h_linkedin): ?>
+                        <li class="icon-linkedin"><a href="<?= $h_linkedin ?>"><i class="bi bi-linkedin"></i></a></li>
+                        <?php endif; ?>
+                        <?php if($h_facebook): ?>
+                        <li class="icon-facebook"><a href="<?= $h_facebook; ?>"><i class="bi bi-facebook"></i></a></li>
+                        <?php endif; ?>
+                        <?php if($h_instagram): ?>
+                        <li class="icon-instagram"><a href="<?= $h_instagram ?>"><i class="bi bi-instagram"></i></a></li>
+                        <?php endif; ?>
+                        <?php if($h_twitter): ?>
+                        <li class="icon-twitter"><a href="<?= $h_twitter ?>"><i class="bi bi-twitter"></i></a></li>
+                        <?php endif; ?>
+                        <?php if($h_whatsapp): ?>
+                        <li class="icon-whatsapp"><a href="<?= $h_whatsapp ?>"><i class="bi bi-whatsapp"></i></a></li>
+                        <?php endif; ?>
                     </ul>
                 </div>     
             </div>
