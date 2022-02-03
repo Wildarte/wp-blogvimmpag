@@ -36,11 +36,11 @@ function callback_whatsapp_option(){
 
 function display_fields_whatsapp(){
     
-    add_settings_section("whatsapp_section", "", "display_whatsapp_options_content", "options_list_whatsapp");
-
-    add_settings_field("show_slide_post", "Forma de listagem dos slider post", "display_slide_post", "options_list_whatsapp", "whatsapp_section");
-
-    register_setting("whatsapp_section", "show_slide_post");
+    //add_settings_section("whatsapp_section", "", "display_whatsapp_options_content", "options_list_whatsapp");
+//
+    //add_settings_field("show_slide_post", "Forma de listagem dos slider post", "display_slide_post", "options_list_whatsapp", "whatsapp_section");
+//
+    //register_setting("whatsapp_section", "show_slide_post");
 }
 
 function display_whatsapp_options_content(){

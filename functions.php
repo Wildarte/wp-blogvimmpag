@@ -42,9 +42,72 @@
     // Habilitar Menus
     add_theme_support('menus');//
 
+    //register menu
+    function register_my_menu() {
+        register_nav_menu('menu-principal',__( 'Menu Principal' ));
+    }
+    add_action( 'init', 'register_my_menu' );
+
     //add support to thumbnail post
     add_theme_support( 'post-thumbnails', ['post']);
 
+     //add custom length to excerpt
+     function my_excerpt_length($length){
+        return 25;
+    }
+    add_filter('excerpt_length', 'my_excerpt_length');
+
     include('admin/panel.php');
+
+    //get name term by slug term
+    function get_nameterm_by_slugterm($slugTerm){
+        $get_id_term_query = [
+            'taxonomy' => 'category',
+            'hide_empty' => false,
+            'slug' => $slugTerm,
+        ];
+        $get_id_term = get_terms($get_id_term_query);
+
+        if($get_id_term){
+            return $get_id_term[0]->name;
+            echo "retornou true";
+        }else{
+            false;
+            echo "retornou false";
+        }
+    }
+
+    function get_idterm_by_slugterm($slugTerm){
+        $get_id_term_query = [
+            'taxonomy' => 'category',
+            'hide_empty' => false,
+            'slug' => $slugTerm,
+        ];
+        $get_id_term = get_terms($get_id_term_query);
+
+        if($get_id_term){
+            return $get_id_term[0]->term_id;
+            echo "retornou true";
+        }else{
+            false;
+            echo "retornou false";
+        }
+    }
+
+    //function for count view more popular posts
+    function wpb_set_post_views($postID) {
+        $count_key = 'wpb_post_views_count';
+        $count = get_post_meta($postID, $count_key, true);
+        if($count==''){
+            $count = 0;
+            delete_post_meta($postID, $count_key);
+            add_post_meta($postID, $count_key, '0');
+        }else{
+            $count++;
+            update_post_meta($postID, $count_key, $count);
+        }
+    }
+    //To keep the count accurate, lets get rid of prefetching
+    remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 ?>

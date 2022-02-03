@@ -1,11 +1,11 @@
 
 <?php get_header(); ?>
     
-    <div class="home_intro">
-        <h1 class="home_title">Blog</h1>
+    <div class="home_intro" style="background-color: <?= get_option('show_cor_bar_header'); ?>;">
+        <h1 class="home_title" style="color: <?= get_option('show_cor_title_header'); ?>;">Blog</h1>
     </div>
 
-    <main class="container main">
+    <main class="container main" style="padding: 60px 0;">
         
         <section class="section_posts">
             <?php 

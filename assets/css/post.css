@@ -43,6 +43,7 @@
 }
 .post_page_thumb_author img{
     width: 100%;
+    border-radius: 50%;
 }
 .content_post{
     max-width: 768px;

@@ -1,127 +1,59 @@
-<?php get_header(); ?>
+<?php get_header(); $categoria = get_the_category()[0]->slug; ?>
     
     <div class="categoria_intro">
-        <h2><strong>Categoria: </strong>Boletos</h2>
+        <h2><strong>Categoria: </strong><?= get_the_category()[0]->name; ?></h2>
     </div>
 
-    <main class="container main">
+    <main class="container main" style="padding: 60px 0;">
         
         <section class="section_posts">
 
+            <?php
+                
+                $args_category_page = [
+                    'post_type' => 'post',
+                    'category_name' => $categoria
+                ];
+
+                $result_category_page = new WP_Query($args_category_page);
+
+                if($result_category_page->have_posts()):
+                    while($result_category_page->have_posts()):
+                        $result_category_page->the_post();
+
+            ?>
+
             <article class="single_card card_post">
                 <div class="post_image">
-                    <div class="post_image_content" style="background-image: url('./assets/img/posts/post2.jpg');">
+                    <?php 
+                        $thumb_category_post = get_the_post_thumbnail_url(null, 'medium');
+                        $thumb_category_post == "" ? $thumb_category_post = get_template_directory_uri().'/assets/img/posts/thumb-post.jpg' : "";
+                    ?>
+                    <div class="post_image_content" style="background-image: url('<?= $thumb_category_post ?>');">
 
                     </div>
                 </div>
                 <header class="post_header">
-                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique debitis.</h2>
+                    <h2><?= get_the_title(); ?></h2>
                     <p class="post_resume">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta expedita nobis modi sint maiores vitae ex adipisci. Ratione, dolorem.
+                    <?= get_the_excerpt(); ?>
                     </p>
                 </header>
                 
-                <a class="post_link" href="http://"></a>
+                <a class="post_link" href="<?= get_the_permalink(); ?>"></a>
             </article>
-            <article class="single_card card_post">
-                <div class="post_image">
-                    <div class="post_image_content" style="background-image: url('./assets/img/posts/post3.jpg');">
-
-                    </div>
-                </div>
-                <header class="post_header">
-                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique debitis.</h2>
-                    <p class="post_resume">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta expedita nobis modi sint maiores vitae ex adipisci. Ratione, dolorem.
-                    </p>
-                </header>
-                
-                <a class="post_link" href="http://"></a>
-            </article>
-            <article class="single_card card_post">
-                <div class="post_image">
-                    <div class="post_image_content" style="background-image: url('./assets/img/posts/post4.jpg');">
-
-                    </div>
-                </div>
-                <header class="post_header">
-                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique debitis.</h2>
-                    <p class="post_resume">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta expedita nobis modi sint maiores vitae ex adipisci. Ratione, dolorem.
-                    </p>
-                </header>
-               
-                <a class="post_link" href="http://"></a>
-            </article>
-            <article class="single_card card_post">
-            <div class="post_image">
-                    <div class="post_image_content" style="background-image: url('./assets/img/posts/post1.jpg');">
-
-                    </div>
-                </div>
-                <header class="post_header">
-                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique debitis.</h2>
-                    <p class="post_resume">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta expedita nobis modi sint maiores vitae ex adipisci. Ratione, dolorem.
-                    </p>
-                </header>
-                
-                <a class="post_link" href="http://"></a>
-            </article>
-            <article class="single_card card_post">
-            <div class="post_image">
-                    <div class="post_image_content" style="background-image: url('./assets/img/posts/post2.jpg');">
-
-                    </div>
-                </div>
-                <header class="post_header">
-                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique debitis.</h2>
-                    <p class="post_resume">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta expedita nobis modi sint maiores vitae ex adipisci. Ratione, dolorem.
-                    </p>
-                </header>
-                
-                <a class="post_link" href="http://"></a>
-            </article>
-            <article class="single_card card_post">
-            <div class="post_image">
-                    <div class="post_image_content" style="background-image: url('./assets/img/posts/post3.jpg');">
-
-                    </div>
-                </div>
-                <header class="post_header">
-                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique debitis.</h2>
-                    <p class="post_resume">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta expedita nobis modi sint maiores vitae ex adipisci. Ratione, dolorem.
-                    </p>
-                </header>
-               
-                <a class="post_link" href="http://"></a>
-            </article>
-            <article class="single_card card_post">
-            <div class="post_image">
-                    <div class="post_image_content" style="background-image: url('./assets/img/posts/post4.jpg');">
-
-                    </div>
-                </div>
-                <header class="post_header">
-                    <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique debitis.</h2>
-                    <p class="post_resume">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi dicta expedita nobis modi sint maiores vitae ex adipisci. Ratione, dolorem.
-                    </p>
-                </header>
-                
-                <a class="post_link" href="http://"></a>
-            </article>
+            <?php endwhile; endif; wp_reset_query(); wp_reset_postdata(); ?>
+            
 
             <div class="controll_posts">
-                <a class="btn_controll_posts" href="http://"><i class="bi bi-caret-left-fill"></i></a>
-                <a class="btn_controll_posts" href="http://"><i class="bi bi-caret-right-fill"></i></a>
+                
+                <?php previous_posts_link('<i class="bi bi-caret-left-fill"></i>'); ?>
+                <?php next_posts_link('<i class="bi bi-caret-right-fill"></i>'); ?>
             </div>
 
         </section>
 
-        <?php include('./inc/aside.php') ?>
+        <?php include('inc/aside.php') ?>
 
     </main>
 
