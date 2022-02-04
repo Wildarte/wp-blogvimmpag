@@ -12,7 +12,6 @@ if(document.querySelector('.btn_menu')){
         document.querySelector('.header_bar_content nav.menu').classList.add('close_menu_mobile');
     });
 
-
     const submenus = document.querySelectorAll('.header_bar_content nav.menu ul li.menu-item-has-children');
 
     submenus.forEach((item) => {

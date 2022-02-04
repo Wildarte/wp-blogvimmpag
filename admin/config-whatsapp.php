@@ -36,11 +36,13 @@ function callback_whatsapp_option(){
 
 function display_fields_whatsapp(){
     
-    //add_settings_section("whatsapp_section", "", "display_whatsapp_options_content", "options_list_whatsapp");
-//
-    //add_settings_field("show_slide_post", "Forma de listagem dos slider post", "display_slide_post", "options_list_whatsapp", "whatsapp_section");
-//
-    //register_setting("whatsapp_section", "show_slide_post");
+    add_settings_section("whatsapp_section", "", "display_whatsapp_options_content", "options_list_whatsapp");
+
+    add_settings_field("show_num_whatsapp", "Número do WhatsApp", "display_num_whatsapp", "options_list_whatsapp", "whatsapp_section");
+    add_settings_field("show_onoff_whatsapp", "ON/OFF WhatsApp", "display_onoff_whatsapp", "options_list_whatsapp", "whatsapp_section");
+
+    register_setting("whatsapp_section", "show_num_whatsapp");
+    register_setting("whatsapp_section", "show_onoff_whatsapp");
 }
 
 function display_whatsapp_options_content(){
@@ -51,5 +53,21 @@ function display_whatsapp_options_content(){
 }
 add_action("admin_init", "display_fields_whatsapp");
 
+function display_num_whatsapp(){
+    ?>
+        <input type="text" name="show_num_whatsapp" id="show_num_whatsapp" value="<?= get_option('show_num_whatsapp'); ?>">
+    <?php
+}
+
+
+function display_onoff_whatsapp(){
+    ?>
+        <style>.switch{position:relative;display:inline-block;width:50px;height:24px}.switch input{opacity:0;width:0;height:0}.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:green;-webkit-transition:.4s;transition:.4s}.slider:before{position:absolute;content:"";height:16px;width:16px;left:4px;bottom:4px;background-color:#fff;-webkit-transition:.4s;transition:.4s}input:checked+.slider{background-color:#999}input:focus+.slider{box-shadow:0 0 1px #2196f3}input:checked+.slider:before{-webkit-transform:translateX(26px);-ms-transform:translateX(26px);transform:translateX(26px)}.slider.round{border-radius:34px}.slider.round:before{border-radius:50%}</style>
+        <label class="switch">
+            <input type="checkbox" name="show_onoff_whatsapp" id="show_onoff_whatsapp" <?= get_option('show_onoff_whatsapp') == "on" ? "checked" : "" ?>>
+            <span class="slider round"></span>
+        </label>
+    <?php
+}
 
 ?>

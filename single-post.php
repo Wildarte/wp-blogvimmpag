@@ -1,5 +1,32 @@
 <?php get_header(); ?>
-
+<style>
+    .not_copy_share{
+        display: none;
+        position: absolute;
+        top: -120%;
+        left: -25%;
+        background-color: #34af23;
+        color: #fff;
+        padding: 5px 10px;
+    }
+    .btn_share_link{
+        position: relative;
+    }
+    .open_not_share{
+        display: block;
+        animation: showNotShare .3s forwards;
+    }
+    @keyframes showNotShare{
+        from{
+            top: -90%;
+            opacity: 0;
+        }
+        to{
+            top: -120%;
+            opacity: 1;
+        }
+    }
+</style>
 <?php if(have_posts()): while(have_posts()): the_post(); ?>
 
 <?php wpb_set_post_views(get_the_ID()); ?>
@@ -88,17 +115,37 @@
                 <h5>Compartilhe</h5>
                 <ul class="share_post_links">
                     <li>
-                        <a href="http://"><i class="bi bi-twitter"></i></a>
+                        <a href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>&url=<?php the_permalink(); ?>"><i class="bi bi-twitter"></i></a>
                     </li>
                     <li>
-                        <a href="http://"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>"><i class="bi bi-facebook"></i></a>
                     </li>
                     <li>
-                        <a href="http://"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://api.whatsapp.com/send?text=<?php the_title(); ?> <?php the_permalink(); ?>"><i class="bi bi-whatsapp"></i></a>
                     </li>
                     <li>
-                        <a href="http://"><i class="bi bi-link-45deg"></i></a>
+                        <a class="btn_share_link" href=""><i class="bi bi-link-45deg"></i>
+                            <span class="not_copy_share">
+                                Copiado
+                            </span>
+                        </a>
+                        <span class="url_share" style="display: none"><?= get_the_permalink(); ?></span>
                     </li>
+                    <script>
+                        const share_link = document.querySelector('.btn_share_link');
+
+                        share_link.addEventListener('click', function(e){
+                            e.preventDefault();
+                            const href = document.querySelector('.url_share').innerHTML
+                            navigator.clipboard.writeText(href);
+                            document.querySelector('.not_copy_share').classList.add('open_not_share');
+                            document.execCommand('copy');
+                            setTimeout(() => {
+                                document.querySelector('.not_copy_share').classList.remove('open_not_share');
+                            }, 2000);
+                        });
+
+                    </script>
                 </ul>
             </div>
 
