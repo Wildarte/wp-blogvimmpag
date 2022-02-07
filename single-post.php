@@ -63,7 +63,10 @@
                 list-style: disc;
                 margin: 40px;
             }
-            .content_post ul li{
+            .content_post ol{
+                margin: 40px;
+            }
+            .content_post ul li, .content_post ol li{
                 font-size: 1.2em;
                 font-weight: 300;
                 line-height: 2em;
@@ -74,6 +77,12 @@
                 margin: 15px 0;
                 object-fit: cover;
             }
+            .content_post a{
+                color: #120A8F;
+                font-weight: 600;
+                text-decoration: underline;
+            }
+            
             @media(max-width: 600px){
                 .content_post img{
                     height: auto;
